@@ -15,7 +15,7 @@ router.get ('/', async (req, res) => {
     const photo = await Photo.find ();
     // await fs.unlink (req.file.path);
     console.log (photo);
-    res.json (photo)
+    res.json (photo);
     //res.render ('Todas las imagenes subidas');
 });
 
@@ -56,7 +56,7 @@ router.get ('/images/add/:photo_id', async (req, res) => {
     const photo = await Photo.findByIdAndDelete (photo_id);
     const result = await cloudinary.v2.uploader.destroy (photo.public_id)
     console.log (result);
-    res.json ('borrado')
+    res.json ({msg: 'borrado'})
     //res.redirect ('direccion')
     } catch (err) {
         console.error (err)
